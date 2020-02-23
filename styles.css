@@ -1,0 +1,587 @@
+header, #buscador #barra-superior, #contenedor-sugerencias .titulo,
+#contenedor-tendencias .titulo, #contenedor-sugerencias .tendencia p,
+#contenedor-tendencias .tendencia p {
+  background-image: -webkit-gradient(linear, right top, left top, from(#F7C9F3), to(#4180F6));
+  background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
+  -webkit-box-shadow: 0 1px 0 0 #110038;
+          box-shadow: 0 1px 0 0 #110038;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin: 0px;
+  height: 24px;
+}
+
+#contenedor-botones button, .boton-habilitado, .modo-dark #contenedor-botones button {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #F7C9F3;
+  border: 1px solid #110038;
+  -webkit-box-shadow: 0 1px 0 0 #110038;
+          box-shadow: 0 1px 0 0 #110038;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 16px;
+  height: 36px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  line-height: 18px;
+  padding: 0px;
+  text-align: center;
+  text-decoration: none;
+  width: 140px;
+}
+
+#contenedor-botones button:hover, .boton-habilitado:hover {
+  border: 1px dotted #110038;
+  cursor: pointer;
+}
+
+#contenedor-botones button:active, .boton-habilitado:active {
+  border: 1px dotted #110038;
+}
+
+#elegir-tema #menu-temas button, #buscador #div-input .buscar, #menu-buscador div {
+  background: #F0F0F0;
+  border: 1px solid #110038;
+  -webkit-box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+          box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+  color: #110038;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 10px;
+}
+
+#elegir-tema #menu-temas button:hover, #buscador #div-input .buscar:hover, #menu-buscador div:hover {
+  border: 1px dotted #110038;
+  cursor: pointer;
+}
+
+#elegir-tema #menu-temas button:active, #buscador #div-input .buscar:active, #menu-buscador div:active {
+  background: #FFF4FD;
+  border: 1px solid #CCA6C9;
+  -webkit-box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
+          box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
+}
+
+.buscados button, #contenedor-sugerencias button,
+#contenedor-tendencias button {
+  background: #4180F6;
+  border: 1px solid #4C2F99;
+  -webkit-box-shadow: inset -2px -2px 0 0 #284F99, inset 2px 2px 0 0 #FFFFFF;
+          box-shadow: inset -2px -2px 0 0 #284F99, inset 2px 2px 0 0 #FFFFFF;
+  color: #FFFFFF;
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 14px;
+  margin: 10px;
+}
+
+.buscados button:hover, #contenedor-sugerencias button:hover,
+#contenedor-tendencias button:hover {
+  cursor: pointer;
+}
+
+#elegir-tema #menu-temas, #buscador, #buscador #div-input input, #menu-buscador {
+  background: #E6E6E6;
+  -webkit-box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+          box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+  padding: 0px;
+}
+
+.modo-dark #elegir-tema #menu, .modo-dark #buscador, .modo-dark #buscador #menu-buscador {
+  background: #B4B4B4;
+  -webkit-box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;
+          box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;
+}
+
+#input-2,
+#input-3 {
+  background: #FFFAFE;
+  border: 1px solid #E6BBE2;
+  -webkit-box-shadow: inset -2px -2px 0 0 #E6DCE4, inset 2px 2px 0 0 #80687D;
+          box-shadow: inset -2px -2px 0 0 #E6DCE4, inset 2px 2px 0 0 #80687D;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 5px;
+}
+
+header p, #buscador #barra-superior p, #buscador #div-input .buscar p, #menu-buscador div p {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  color: #FFFFFF;
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 16px;
+  margin: 10px;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+header {
+  height: 23px;
+  width: 100%;
+}
+
+header p {
+  font-size: 12px;
+}
+
+#contenedor {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 40px;
+}
+
+#cabecera {
+  -ms-flex-line-pack: center;
+      align-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#cabecera #logo-day {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+#contenedor-botones {
+  -ms-flex-line-pack: end;
+      align-content: flex-end;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-items: center;
+}
+
+#contenedor-botones #btn-4 {
+  background: none;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  margin-left: 20px;
+  text-align: left;
+  width: 100px;
+}
+
+#contenedor-botones #btn-4:active {
+  border: none;
+}
+
+#contenedor-botones #btn-4:hover {
+  border: 1px dotted #110038;
+}
+
+#elegir-tema {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#elegir-tema #btn-tema {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#elegir-tema #btn-tema #btn-2 {
+  margin-left: 20px;
+}
+
+#elegir-tema #btn-tema #btn-3 {
+  margin-left: 0px;
+  width: 25px;
+}
+
+#elegir-tema #menu-temas {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 20px;
+  padding: 0px;
+  width: 165px;
+}
+
+#elegir-tema #menu-temas button {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+#elegir-tema #menu-temas button:active {
+  background: #2E32FB;
+  border: 1px solid rgba(51, 53, 143, 0.2);
+  -webkit-box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
+          box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
+  color: #FFFFFF;
+}
+
+#buscador {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: baseline;
+      -ms-flex-pack: baseline;
+          justify-content: baseline;
+  margin: 50px 0px 25px 0px;
+}
+
+#buscador #barra-superior {
+  margin: 5px;
+}
+
+#buscador #div-input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 5px;
+}
+
+#buscador #div-input input {
+  -webkit-box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
+          box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
+  height: 40px;
+  padding-left: 5px;
+  width: 1200px;
+}
+
+#buscador #div-input .buscar {
+  -ms-flex-item-align: center;
+      align-self: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 30px;
+  margin: 10px;
+  width: 100px;
+}
+
+#buscador #div-input .buscar p {
+  color: #B4B4B4;
+  margin: 5px;
+}
+
+#buscador #div-input .buscar img {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  height: 16px;
+  margin: 5px;
+  width: 16px;
+}
+
+#buscador #btn-busquedas {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.boton-habilitado {
+  -ms-flex-item-align: center;
+      align-self: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 30px;
+  margin: 10px;
+  width: 100px;
+}
+
+.boton-habilitado img {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  height: 16px;
+  margin: 5px;
+  width: 16px;
+}
+
+.boton-habilitado p {
+  color: #110038;
+  margin: 5px;
+}
+
+.buscados {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  height: 30px;
+  margin: 5px;
+  overflow: hidden;
+}
+
+.buscados button {
+  height: 25px;
+  max-width: 140px;
+  margin: 5px;
+  overflow: hidden;
+}
+
+#menu-buscador {
+  display: none;
+}
+
+#menu-buscador div {
+  background: #DBDBDB;
+  border: 1px solid #808080;
+  -webkit-box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+          box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+#menu-buscador div p {
+  color: #110038;
+}
+
+#input-2,
+#input-3 {
+  width: 1255px;
+}
+
+.dia {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  padding: 0px;
+  -webkit-columns: 4;
+          columns: 4;
+}
+
+.dia img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 5px;
+  max-height: 300px;
+}
+
+#contenedor-sugerencias,
+#contenedor-tendencias {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0px;
+  -webkit-columns: 5;
+          columns: 5;
+}
+
+#contenedor-sugerencias .sugerencia,
+#contenedor-tendencias .sugerencia {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 324px;
+  margin-top: 5px;
+  width: 300px;
+}
+
+#contenedor-sugerencias .sugerencia #giphy-sugerido,
+#contenedor-tendencias .sugerencia #giphy-sugerido {
+  position: absolute;
+}
+
+#contenedor-sugerencias .sugerencia #giphy-sugerido:hover,
+#contenedor-tendencias .sugerencia #giphy-sugerido:hover {
+  border: 1px dotted #110038;
+  cursor: pointer;
+}
+
+#contenedor-sugerencias .titulo,
+#contenedor-tendencias .titulo {
+  -ms-flex-line-pack: center;
+      align-content: center;
+  color: #FFFFFF;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 14px;
+  height: 20px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  max-width: 300px;
+  z-index: 1;
+  overflow: hidden;
+}
+
+#contenedor-sugerencias button,
+#contenedor-tendencias button {
+  height: 28px;
+  width: 75px;
+  z-index: 1;
+}
+
+#contenedor-sugerencias button:hover,
+#contenedor-tendencias button:hover {
+  border: 1px dotted #110038;
+}
+
+#contenedor-sugerencias button p,
+#contenedor-tendencias button p {
+  margin: 5px;
+}
+
+#contenedor-sugerencias .tendencia,
+#contenedor-tendencias .tendencia {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 5px;
+}
+
+#contenedor-sugerencias .tendencia img,
+#contenedor-tendencias .tendencia img {
+  max-height: 250px;
+}
+
+#contenedor-sugerencias .tendencia img:hover,
+#contenedor-tendencias .tendencia img:hover {
+  cursor: pointer;
+  border: 1px dotted #110038;
+}
+
+#contenedor-sugerencias .tendencia p,
+#contenedor-tendencias .tendencia p {
+  display: none;
+  color: #FFFFFF;
+}
+
+#input-sugerencias,
+#input-tendencias {
+  width: 1255px;
+}
+
+#input-sugerencias input,
+#input-tendencias input {
+  width: 100%;
+}
+
+.modo-dark #contenedor {
+  background-color: #110038;
+}
+
+.modo-dark #contenedor-botones button {
+  background: #EE3EFE;
+  border: 0 1px 0 0 #110038;
+  -webkit-box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
+          box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
+  color: #FFFFFF;
+}
+
+.modo-dark #contenedor-botones button:hover {
+  border: 1px dotted #FFFFFF;
+}
+
+.modo-dark #gifOF_logo {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.modo-dark #elegir-tema #menu {
+  display: none;
+}
+
+.modo-dark #buscador #barra-superior {
+  background-image: -webkit-gradient(linear, right top, left top, from(#EE3EFE), to(#2E32FB));
+  background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
+  margin: 5px;
+}
+
+.modo-dark #buscador #div-input #buscar {
+  border: 0 1px 0 0 #110038;
+  -webkit-box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
+          box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
+  color: #B4B4B4;
+}
+
+.modo-dark #buscador #div-input #buscar p {
+  color: #8F8F8F;
+}
+
+.modo-dark #buscador #menu-buscador div {
+  border: 1px solid #808080;
+  -webkit-box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+          box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+  background: #CCCCCC;
+  display: none;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.modo-dark #buscador #menu-buscador div p {
+  color: #110038;
+}
+/*# sourceMappingURL=styles.css.map */
