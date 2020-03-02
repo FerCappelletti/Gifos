@@ -7,28 +7,30 @@ async function getApi(url) {
     console.log(response);
     return response;
 };
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 window.onload = cargaPagina;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 function cargaPagina() {
-    sugerenciasPorCuatro();
-    obtenerTendencias();
+    mostrarSugerenciasPorCuatro();
+    getTendencias();
     eventos();
+    guardarEnLocalStorage()
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function mostrarSugerencias() {
+function getSugerencias() {
     getApi('https://api.giphy.com/v1/gifs/random?api_key=' + apiKey + '&tag=&rating=G')
-        .then(mostrar);
+        .then(obtenerSugerencia);
 };
-function mostrar(random) {
+function obtenerSugerencia(random) {
     let contenedorSugerencias = document.getElementById('contenedor-sugerencias');
     let box = document.createElement('div');
     box.classList.add('sugerencia');
     contenedorSugerencias.appendChild(box);
 
     let descripcion = document.createElement('p');
-    descripcion.className = 'titulo';
-    descripcion.innerHTML = ('#') + random.data.title;
+    descripcion.id = 'titulo';
+    descripcion.innerHTML = random.data.title;
     let cruz = document.createElement('img');
     cruz.src = './imagenes/close.svg';
     descripcion.appendChild(cruz);
@@ -43,22 +45,20 @@ function mostrar(random) {
     imagen.classList.add('sugerencia');
     imagen.id = 'giphy-sugerido';
     box.appendChild(imagen);
-    boton.addEventListener('click', () => {
-        let buscador = document.getElementById('input-buscar');
-        buscador.value = random.data.title;
-        habilitarBotonBuscar();
-        buscador.scrollIntoView();
+    boton.addEventListener('click', () =>{
+         let buscador = document.getElementById('input-buscar');
+         buscador.value = random.data.title;
+         habilitarBotonBuscar();
+         buscador.scrollIntoView();
     });
 };
-/////promises all//////////////////
-function sugerenciasPorCuatro() {
+function mostrarSugerenciasPorCuatro() {
     for (i = 0; i < 4; i++) {
-        mostrarSugerencias();
+        getSugerencias();
     };
-
 };
 
-function obtenerTendencias() {
+function getTendencias() {
     getApi('https://api.giphy.com/v1/gifs/trending?api_key=' + apiKey + '&limit=12&rating=G')
         .then(mostrartendencias);
 };
@@ -75,17 +75,23 @@ function mostrartendencias(datos) {
         giphyTendencia.appendChild(imagen)
             
         let titulo = document.createElement('p');
-        titulo.innerText = ('#') + datos.data[i].title;
+        titulo.id = 'titulo';
+        titulo.innerText = datos.data[i].title;
         giphyTendencia.appendChild(titulo);   
         
-        //  titulo.addEventListener('click', verMasGiphys);
-
         imagen.addEventListener('mouseover', () => {
         if(titulo.style.display = 'none'){
             titulo.style.display = 'block';
-        }
+            }
         });
-        //imagen.addEventListener('click', verMasGiphys);
+
+        imagen.addEventListener('click', () => {
+            let buscador = document.getElementById('input-buscar');
+            buscador.value = titulo.textContent;
+            habilitarBotonBuscar();
+            buscador.scrollIntoView();
+            }
+        );
 
         imagen.addEventListener('mouseleave', () => {
             if(titulo.style.display = 'block'){
@@ -171,25 +177,26 @@ function busquedasEncontradas(datos) {
     contenedorImagen.replaceWith(gifsEncontrados);
 };
 /////////////////local storage + botones celestes//////////////
-let historial = [];
-async function getHistorial(){
-    let busquedaRealizada = await localStorage.getItem('giphys');
-    let newValue = JSON.stringify(busquedaRealizada);
-        console.log(historial);
-    return newValue;
-};
-
-function getStorage(){
+let historialDeBusquedaLocalStorage = [];
+function guardarEnLocalStorage(){
     let busqueda = document.getElementById('input-buscar').value;
-    localStorage.setItem('giphys', busqueda);
-    historial.unshift(busqueda);
-    getHistorial();
+    if(localStorage.getItem('historialLocalStorage') != null){
+        localStorage.setItem('historialLocalStorage',  JSON.stringify(busqueda));
+        historialDeBusquedaLocalStorage.unshift(busqueda);
+}
+    
 };
 function hacerBotones(){
         let contenedorBotonesDeBusquedas = document.getElementById('botones-de-busquedas');
         let botonBusquedasRealizadas = document.createElement('button');
-        botonBusquedasRealizadas.innerHTML = ('#') + historial[0];
+        botonBusquedasRealizadas.innerHTML = historialDeBusquedaLocalStorage[0];
         contenedorBotonesDeBusquedas.insertAdjacentElement('afterbegin', botonBusquedasRealizadas);  
+        botonBusquedasRealizadas.addEventListener('click', () => {
+            let buscador = document.getElementById('input-buscar');
+            buscador.value = botonBusquedasRealizadas.textContent;
+            habilitarBotonBuscar();
+            buscador.scrollIntoView();
+            });
 };
 
 function hiceEnter(event) {
@@ -210,7 +217,7 @@ function eventos() {
     document.getElementById('input-buscar').addEventListener('keypress', habilitarBotonBuscar);
     document.getElementById('input-buscar').addEventListener('click', getApiResults);
     document.getElementById('input-buscar').addEventListener('focus', limpiarInput);
-    document.getElementById('buscar').addEventListener('click', getStorage);
+    document.getElementById('buscar').addEventListener('click', guardarEnLocalStorage);
     document.getElementById('buscar').addEventListener('click', getApiResults);
     document.getElementById('buscar').addEventListener('click', hacerBotones);
     document.getElementById('buscar').addEventListener('click', desactivarBotonBuscar);

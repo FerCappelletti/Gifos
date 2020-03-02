@@ -1,6 +1,4 @@
-header, #buscador #barra-superior, #contenedor-sugerencias .titulo,
-#contenedor-tendencias .titulo, #contenedor-sugerencias .tendencia p,
-#contenedor-tendencias .tendencia p {
+header, #buscador #barra-superior, #titulo, .modo-dark #titulo {
   background-image: -webkit-gradient(linear, right top, left top, from(#F7C9F3), to(#4180F6));
   background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
   -webkit-box-shadow: 0 1px 0 0 #110038;
@@ -13,6 +11,11 @@ header, #buscador #barra-superior, #contenedor-sugerencias .titulo,
           justify-content: flex-start;
   margin: 0px;
   height: 24px;
+}
+
+header .modo-dark, #buscador #barra-superior .modo-dark, #titulo .modo-dark {
+  background-image: -webkit-gradient(linear, right top, left top, from(#EE3EFE), to(#2E32FB));
+  background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
 }
 
 #contenedor-botones button, .boton-habilitado, .modo-dark #contenedor-botones button {
@@ -452,25 +455,6 @@ header p {
   cursor: pointer;
 }
 
-#contenedor-sugerencias .titulo,
-#contenedor-tendencias .titulo {
-  -ms-flex-line-pack: center;
-      align-content: center;
-  color: #FFFFFF;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  font-family: "Chakra Petch", sans-serif;
-  font-size: 14px;
-  height: 20px;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  max-width: 300px;
-  z-index: 1;
-  overflow: hidden;
-}
-
 #contenedor-sugerencias button,
 #contenedor-tendencias button {
   height: 28px;
@@ -511,10 +495,25 @@ header p {
   border: 1px dotted #110038;
 }
 
-#contenedor-sugerencias .tendencia p,
-#contenedor-tendencias .tendencia p {
-  display: none;
+#titulo {
+  -ms-flex-line-pack: center;
+      align-content: center;
   color: #FFFFFF;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 14px;
+  height: 20px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  z-index: 1;
+  overflow: hidden;
+}
+
+#titulo::before {
+  content: "#";
 }
 
 #input-sugerencias,
@@ -583,5 +582,24 @@ header p {
 
 .modo-dark #buscador #menu-buscador div p {
   color: #110038;
+}
+
+.modo-dark #titulo {
+  background-image: -webkit-gradient(linear, right top, left top, from(#EE3EFE), to(#2E32FB));
+  background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
+  -ms-flex-line-pack: center;
+      align-content: center;
+  color: #FFFFFF;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 14px;
+  height: 20px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  z-index: 1;
+  overflow: hidden;
 }
 /*# sourceMappingURL=styles.css.map */
