@@ -25,6 +25,9 @@ $font-size-m : 20px;
     justify-content: flex-start;
     margin: 0px;
     height: 24px;
+    .modo-dark{
+        background-image: $color-gradiente-dark;
+    }
 }
 %boton {
     align-items: center;

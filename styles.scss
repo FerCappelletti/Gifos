@@ -159,8 +159,9 @@ header {
     }
 
 }
+
 /////////////////////////boton cuando está habilitado////////////////////////////////////
-.boton-habilitado{
+.boton-habilitado {
     @extend %boton;
     align-self: center;
     display: flex;
@@ -177,13 +178,14 @@ header {
         width: 16px;
     }
 
-    p{
+    p {
         color: $fondo-dark;
         margin: 5px;
     }
 }
+
 /////////////////////////div de botones celestes busquedas realizadas////////////////////
-.buscados { 
+.buscados {
     display: flex;
     flex-wrap: wrap;
     height: 30px;
@@ -198,6 +200,7 @@ header {
         overflow: hidden;
     }
 }
+
 ////////////////////////////////////////////
 #menu-buscador {
     @extend %container;
@@ -242,7 +245,7 @@ header {
 #contenedor-tendencias {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between  ;
+    justify-content: space-between;
     padding: 0px;
     columns: 5;
 
@@ -251,7 +254,8 @@ header {
         justify-content: space-between;
         flex-direction: column;
         height: 324px;
-        margin-top: 5px;;
+        margin-top: 5px;
+        ;
         width: 300px;
 
         #giphy-sugerido {
@@ -262,19 +266,6 @@ header {
                 cursor: pointer;
             }
         }
-    }
-    .titulo {
-        @extend %barras;
-        align-content: center;
-        color: $fondo-Day;
-        display: flex;
-        font-family: $font-family1;
-        font-size: 14px;
-        height: 20px;
-        justify-content: space-between;
-        max-width: 300px;
-        z-index: 1;
-        overflow: hidden;
     }
 
     button {
@@ -291,27 +282,39 @@ header {
             margin: 5px;
         }
     }
-    .tendencia{
+
+    .tendencia {
         display: flex;
         flex-direction: column;
         margin: 5px;
-        //max-width: 300px;
-        img{
+
+        img {
             max-height: 250px;
-            &:hover{
+
+            &:hover {
                 cursor: pointer;
                 border: 1px dotted #110038;
+            }
         }
-        }
-        p{
-           @extend %barras;
-           display: none;
-           color: $fondo-Day;
-        }
-        
     }
 }
+#titulo {
+    @extend %barras;
+    align-content: center;
+    color: $fondo-Day;
+    display: flex;
+    font-family: $font-family1;
+    font-size: 14px;
+    height: 20px;
+    justify-content: space-between;
+    z-index: 1;
+    overflow: hidden;
 
+    &::before {
+        content: "#";
+    }
+
+}
 #input-sugerencias,
 #input-tendencias {
     width: 1255px;
@@ -374,7 +377,7 @@ header {
                 }
             }
         }
-
+        
         #menu-buscador {
             @extend %container-dark;
 
@@ -390,5 +393,18 @@ header {
                 }
             }
         }
+    }
+    #titulo {
+        @extend %barras;
+        background-image: $color-gradiente-dark;
+        align-content: center;
+        color: $fondo-Day;
+        display: flex;
+        font-family: $font-family1;
+        font-size: 14px;
+        height: 20px;
+        justify-content: space-between;
+        z-index: 1;
+        overflow: hidden;
     }
 }
