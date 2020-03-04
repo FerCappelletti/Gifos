@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 .barra-gradient, #contenedor-sugerencias .titulo,
-#contenedor-tendencias .titulo {
-=======
-header, #buscador #barra-superior, #titulo, .modo-dark #titulo {
->>>>>>> 9af097f9a114d2ef2bf9a7b83491f6dd8d3591d9
+#contenedor-tendencias .titulo, #titulo, .modo-dark #titulo {
   background-image: -webkit-gradient(linear, right top, left top, from(#F7C9F3), to(#4180F6));
   background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
   -webkit-box-shadow: 0 1px 0 0 #110038;
@@ -18,16 +14,12 @@ header, #buscador #barra-superior, #titulo, .modo-dark #titulo {
   height: 24px;
 }
 
-<<<<<<< HEAD
-.contenedor-botones button, .boton-habilitado, .modo-dark #contenedor-botones button {
-=======
-header .modo-dark, #buscador #barra-superior .modo-dark, #titulo .modo-dark {
+.barra-gradient .modo-dark, #contenedor-sugerencias .titulo .modo-dark, #contenedor-tendencias .titulo .modo-dark, #titulo .modo-dark {
   background-image: -webkit-gradient(linear, right top, left top, from(#EE3EFE), to(#2E32FB));
   background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
 }
 
-#contenedor-botones button, .boton-habilitado, .modo-dark #contenedor-botones button {
->>>>>>> 9af097f9a114d2ef2bf9a7b83491f6dd8d3591d9
+.contenedor-botones button, .boton-habilitado, .modo-dark #contenedor-botones button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -473,7 +465,6 @@ a {
   cursor: pointer;
 }
 
-<<<<<<< HEAD
 #contenedor-sugerencias .titulo,
 #contenedor-tendencias .titulo {
   color: #FFFFFF;
@@ -496,8 +487,6 @@ a {
   content: "#";
 }
 
-=======
->>>>>>> 9af097f9a114d2ef2bf9a7b83491f6dd8d3591d9
 #contenedor-sugerencias button,
 #contenedor-tendencias button {
   height: 28px;
@@ -534,8 +523,6 @@ a {
   border: 1px dotted #110038;
 }
 
-<<<<<<< HEAD
-=======
 #titulo {
   -ms-flex-line-pack: center;
       align-content: center;
@@ -557,7 +544,6 @@ a {
   content: "#";
 }
 
->>>>>>> 9af097f9a114d2ef2bf9a7b83491f6dd8d3591d9
 #input-sugerencias,
 #input-tendencias,
 #mis_guifos {
