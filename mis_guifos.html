@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>GifOs</title>
+    <title>Mis Guifos</title>
     <link href="https://fonts.googleapis.com/css?family=Chakra+Petch&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <script src="gifos.js"></script>
+    <script src="script_mis_guifos.js"></script>
 </head>
-
 <body>
     <header class="barra-gradient">
         <p>¡Bienvenidos/as a Guifos.com! ——————Donde los gifs están.////// Número de visitas: 12.765.803</p>
@@ -24,7 +21,8 @@
                     <div id="elegir-tema">
                         <div id="btn-tema">
                             <button id="btn-2">Elegir tema</button>
-                            <button id="btn-3"><img src="./imagenes/dropdown.svg" alt="drop" id="drop"></button>
+                            <button id="btn-3"><img src="./imagenes/dropdown.svg" alt="drop"
+                                    id="drop"></button>
                         </div>
                         <div id="menu-temas">
                             <button id="day">Sailor Day</button>
@@ -34,34 +32,30 @@
                     <button id="btn-4"><a href="mis_guifos.html" target="_blank">Mis Guifos</a></button>
                 </div>
             </div>
-            <div id="buscador">
+            <div class="sugerencia" id="contenedor_mis_guifos">
                 <div class="barra-gradient" id="barra-superior">
-                    <p>Buscar</p>
+                    <p>Crear Guifos</p>
                 </div>
-                <div id="div-input">
-                    <input type="search" id="input-buscar"
-                        placeholder="Busca gifs, hashtags, temas, busca lo que quieras…">
-                    <button class="buscar" id="buscar" disabled><img src="./imagenes/lupa_inactive.svg" alt="lupa"
-                            id="lupa">
-                        <p id="palabra-buscar">Buscar</p>
-                    </button>
-                </div>
-                <div id="menu-opciones">
-                </div>
-                <div class="buscados" id="botones-de-busquedas"></div>
-            </div>
-            <div class="dia" id="contenedorDeBusqueda"></div>
-    </section-1>
-    <section-2>
-        <div id="input-sugerencias"><input type="text" placeholder="Hoy te sugerimos" id="input-2"></input></div>
-        <div class="sugerencia" id="contenedor-sugerencias">
-        </div>
-    </section-2>
-    <section-3>
-        <div id="input-tendencias"><input type="text" placeholder="Tendencias" id="input-3"></input></div>
-        <div id="contenedor-tendencias"></div>
-    </section-3>
-    </div>
-</body>
+                    <div class="" id="encabezado_mis_guifos">
+                        <img src="./imagenes/window img.png" alt="window"><p>Aquí podrás crear tus propios guifos</p>
+                    </div>
+                    <div>
+                        <p></p>
+                        <ol>
+                            <li>Dar permisos de acceso a la cámara (sólo por el tiempo de uso)</li>
+                            <li>Capturar tu momento guifo</li>
+                            <li>Revisar el momento</li>
+                            <li>Listo para subir y compartir!</li>
+                            </ol>
 
+                            <p>¿Quieres comenzar a crear tu <b>guifo</b> ahora?</p>
+                    </div>
+                    <div class="contenedor-botones">
+                        <button>Cancelar</button>
+                        <button>Comenzar</button>
+                    </div>
+            </div>
+            <div id="mis_guifos"><input type="text" placeholder ="Mis Guifos" id="input-2"></input></div>
+            <div class="dia" id="contenedor_mis_guifos"></div>
+</body>
 </html>
