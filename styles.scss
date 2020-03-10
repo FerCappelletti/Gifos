@@ -1,14 +1,16 @@
 @import "variables";
 
 body {
+    background-color: $background-1;
     margin: 0px;
     padding: 0px;
-    background-color: $background-1;
 }
 
 .barra-gradient {
     @extend %barras;
-    height: 23px;
+    display: flex;
+    height: 25px;
+    justify-content: space-between;
 
     p {
         @extend %p;
@@ -16,7 +18,7 @@ body {
 }
 
 ///////////div container//////////
-#contenedor {
+.contenedor {
     flex-direction: column;
     padding: 40px;
 }
@@ -27,41 +29,81 @@ a {
 }
 
 ///////////////cabecera////////
-#cabecera {
+.cabecera {
     align-content: center;
     display: flex;
     justify-content: space-between;
 
-    #logo-day {
-        align-self: center;
+    .imagenes {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+
+        img {
+            align-self: center;
+            cursor: pointer;
+            margin: 5px;
+        }
     }
 }
 
 .contenedor-botones {
-    align-content: flex-end;
+    align-items: center;
     display: flex;
-    justify-items: center;
+    justify-content: flex-end;
+    padding: 5px;
 
     button {
         @extend %boton;
     }
+
+    .btn-blancos {
+        @extend %boton;
+        background: $fondo-Day;
+        margin: 5px;
+
+        &:hover {
+            background: #F7C9F3;
+        }
+    }
+
+    .btn-rojo {
+        display: flex;
+        display: none;
+
+        button {
+            background: #FF6161;
+            margin: 0px;
+        }
+
+    }
+
+    .btn-3 {
+        margin-left: 0px;
+        width: 25px;
+    }
+
+    #btn-4 {
+        background: none;
+        border: none;
+        box-shadow: none;
+        margin-left: 20px;
+        text-align: left;
+        width: 100px;
+
+        &:active {
+            border: none;
+        }
+
+        &:hover {
+            border: $border;
+        }
+    }
 }
 
-#btn-4 {
-    background: none;
-    border: none;
-    box-shadow: none;
-    margin-left: 20px;
-    text-align: left;
-    width: 100px;
-
-    &:active {
-        border: none;
-    }
-
-    &:hover {
-        border: $border;
-    }
+#ocultar {
+    display: flex;
+    justify-content: space-between;
 }
 
 #elegir-tema {
@@ -73,17 +115,14 @@ a {
 
         #btn-2 {
             margin-left: 20px;
+            margin-right: 0px;
         }
 
-        #btn-3 {
-            margin-left: 0px;
-            width: 25px;
-        }
     }
 
     #menu-temas {
-        display: none;
         @extend %container;
+        display: none;
         flex-direction: column;
         margin-left: 20px;
         padding: 0px;
@@ -110,7 +149,7 @@ a {
     justify-content: baseline;
     margin: 50px 0px 25px 0px;
 
-    #barra-superior {
+    div {
         margin: 5px;
     }
 
@@ -127,7 +166,7 @@ a {
             width: 1200px;
         }
 
-        .buscar {
+        button {
             @extend %boton-menu-temas;
             align-self: center;
             display: flex;
@@ -146,17 +185,10 @@ a {
                 border: none;
                 box-shadow: none;
                 height: 16px;
-                margin: 5px;
                 width: 16px;
             }
         }
     }
-
-    #btn-busquedas {
-        display: flex;
-        flex-direction: row;
-    }
-
 }
 
 /////////////////////////boton cuando está habilitado////////////////////////////////////
@@ -173,7 +205,6 @@ a {
         border: none;
         box-shadow: none;
         height: 16px;
-        margin: 5px;
         width: 16px;
     }
 
@@ -188,7 +219,7 @@ a {
     display: flex;
     height: 30px;
     justify-content: flex-start;
-    margin: 5px;
+    margin: 10px;
     overflow: hidden;
 
     button {
@@ -196,18 +227,22 @@ a {
         height: 24px;
         margin: 5px;
 
-        //width: min-content;
         &::before {
             content: "#";
         }
     }
 
+    p {
+        @extend %p;
+        color: $fondo-dark;
+    }
 }
 
 ////////////////////////////////////////////
-#menu-opciones {
+.menu-opciones {
     @extend %container;
     display: none;
+    flex-direction: column;
 
     div {
         @extend %boton-menu-temas;
@@ -223,13 +258,12 @@ a {
     }
 }
 
-#input-2,
-#input-3 {
+.input {
     @extend %container-input;
     width: 1255px;
 }
 
-.dia {
+.contenedor-de-giphys {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -244,151 +278,157 @@ a {
     }
 }
 
-#contenedor-sugerencias,
-#contenedor-tendencias {
+.contenedores {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 0px;
     columns: 5;
+}
 
-    .sugerencia {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
-        height: 324px;
-        margin-top: 5px;
-        ;
-        width: 300px;
+.sugerencia {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 324px;
+    margin-top: 5px;
+    width: 300px;
 
-        #giphy-sugerido {
-            position: absolute;
-
-            &:hover {
-                border: 1px dotted #110038;
-                cursor: pointer;
-            }
-        }
+    &:hover {
+        border: 1px dotted #110038;
+        cursor: pointer;
     }
 
-    .titulo {
-        @extend %barras;
-        color: $fondo-Day;
-        display: flex;
-        font-family: $font-family1;
-        font-size: 14px;
-        height: 20px;
-        justify-content: space-between;
-        max-width: 300px;
-        z-index: 1;
-        overflow: hidden;
-
-        &::before {
-            content: "#";
-        }
+    .giphy-sugerido {
+        height: 324px;
+        width: 300px;
+        position: absolute;
+        z-index: -2;
     }
 
     button {
         @extend %botones-celestes;
         height: 28px;
+        margin: 0px;
         width: 75px;
         z-index: 1;
 
         &:hover {
             border: 1px dotted #110038;
         }
-
     }
 
-    .tendencia {
-        display: flex;
-        flex-direction: column;
-        margin: 5px;
-        max-width: 300px;
+}
 
-        img {
-            max-height: 250px;
+.tendencia {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
 
-            &:hover {
-                cursor: pointer;
-                border: 1px dotted #110038;
-            }
+    p {
+        &::before {
+            content: "#";
         }
     }
-}
-#titulo {
-    @extend %barras;
-    align-content: center;
-    color: $fondo-Day;
-    display: flex;
-    font-family: $font-family1;
-    font-size: 14px;
-    height: 20px;
-    justify-content: space-between;
-    z-index: 1;
-    overflow: hidden;
 
-    &::before {
-        content: "#";
-    }
+    img {
+        max-height: 250px;
 
-}
-#input-sugerencias,
-#input-tendencias,
-#mis_guifos {
-    width: 1255px;
-
-    input {
-
-        width: 100%
+        &:hover {
+            cursor: pointer;
+            border: 1px dotted #110038;
+        }
     }
 }
 
 ////////////////////////style mis guifos/////////////////////////////////////////////////////
 #contenedor_mis_guifos {
-    @extend %container-input;
-    display: flex;
-    flex-direction: column;
-    margin: 5% 25% 5% 25%;
+    @extend %container;
+    display: none;
+    padding: 5px;
 }
 
-#encabezado_mis_guifos {
+.contenedor_guifos {
+    @extend %container;
     display: flex;
+    flex-direction: column;
+    margin: 50px;
+    margin-left: 350px;
+    width: 50%;
+    padding: 5px;
+}
 
-    img {
-        align-self: center;
-    }
+// #comenzar,
+// #cancelar,
+// #repetir-captura,
+// #subir-guifo {
+//     background-color: $fondo-Day;
 
+//     &:hover {
+//         background-color: #F7C9F3;
+//         ;
+//     }
+// }
+
+#crear_guifo {
     p {
         @extend %p;
         color: $fondo-dark;
-        font-weight: bold;
+        margin-left: 45px;
     }
-}
-#contenedor_mis_guifos{
-    display: flex;
-}
-///////////////////////////class dark////////////////////////////////////////
-.modo-dark {
-    #contenedor {
-        background-color: $fondo-dark;
-    }  
-        #contenedor-botones {
-            button {
-                @extend %boton;
-                background: $background-2;
-                border: $box-shadow;
-                box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
-                color: $fondo-Day;
-                
-                &:hover {
-                    border: 1px dotted #FFFFFF;
+
+    ol {
+        list-style: none;
+        counter-reset: lista;
+
+        li {
+            @extend %p;
+            color: $fondo-dark;
+
+            &::before {
+                counter-increment: lista;
+                content: counter(lista) ")";
+                font-weight: bold;
+                margin: 5px;
             }
         }
+    }
+}
 
-        #btn-4 {
+#contador {
+    @extend %container-input;
+    text-align: center;
+    width: 100px;
+}
+
+#btn-captura {
+    display: none;
+}
+
+///////////////////////////class dark////////////////////////////////////////
+.modo-dark {
+    .contenedor {
+        background-color: $fondo-dark;
+    }
+
+    .barra-gradient {
+        background-image: $color-gradiente-dark;
+    }
+
+    .contenedor-botones {
+        button {
+            @extend %boton;
+            background: $background-2;
+            border: $box-shadow;
+            box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
+            color: $fondo-Day;
+
             a {
                 color: $fondo-Day;
+            }
+
+            &:hover {
+                border: 1px dotted #FFFFFF;
             }
         }
     }
@@ -407,23 +447,26 @@ a {
     #buscador {
         @extend %container-dark;
 
-        .barra-gradient {
-            background-image: $color-gradiente-dark;
-            margin: 5px;
-        }
-
         #div-input {
-            #buscar {
+
+            button {
                 border: $box-shadow;
                 box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
                 color: #B4B4B4;
 
+                img {
+                    margin: 0px;
+                }
+
                 p {
+                    @extend %p;
                     color: #8F8F8F;
+                    margin: 0px;
                 }
             }
+
         }
-        
+
         #menu-buscador {
             @extend %container-dark;
 
@@ -439,18 +482,5 @@ a {
                 }
             }
         }
-    }
-    #titulo {
-        @extend %barras;
-        background-image: $color-gradiente-dark;
-        align-content: center;
-        color: $fondo-Day;
-        display: flex;
-        font-family: $font-family1;
-        font-size: 14px;
-        height: 20px;
-        justify-content: space-between;
-        z-index: 1;
-        overflow: hidden;
     }
 }
