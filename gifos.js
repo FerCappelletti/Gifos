@@ -1,27 +1,25 @@
+window.onload = cargaPagina;
 const apiKey = 'dkVRyCXXNDv7wwCKsRBvO6XVQ5xtqNNi';
-//////////////asyn function que uso para los fetch//////////////////////
+
+function cargaPagina() {
+    getFormLocalStorage();
+    mostrarSugerenciasPorCuatro();
+    getTendencias();
+    eventos();
+    opcionesDeOtrasBusquedas();¿
+}
+
 async function getApi(url) {
     let found = await fetch(url);
     let response = await found.json();
     return response;
 };
 
-////////////////////////////////window onload////////////////////////////////////////////////////////////////////
-window.onload = cargaPagina;
-////////////////////////////////funcion de window onload///////////////////////////////////////////////////////////////////
-function cargaPagina() {
-    getFormLocalStorage();
-    mostrarSugerenciasPorCuatro();
-    getTendencias();
-    eventos();
-    opcionesDeOtrasBusquedas();
-
-}
-/////////////////////////////////trae de a 1 objeto////////////////////////////////////////////////////////////////////////////////
 function getSugerencias() {
     getApi('https://api.giphy.com/v1/gifs/random?api_key=' + apiKey + '&tag=&rating=G')
         .then(obtenerSugerencia);
 };
+
 function obtenerSugerencia(random) {
     let contenedorSugerencias = document.getElementById('contenedor-sugerencias');
     let box = document.createElement('div');
@@ -54,18 +52,18 @@ function obtenerSugerencia(random) {
         buscador.scrollIntoView();
     });
 };
-/////////////////////iterar para obtener 4 sugerencias///////////////////
+
 function mostrarSugerenciasPorCuatro() {
     for (i = 0; i < 4; i++) {
         getSugerencias();
     };
 };
-/////////////////////traer tendencias///////////////////////////////////
+
 function getTendencias() {
     getApi('https://api.giphy.com/v1/gifs/trending?api_key=' + apiKey + '&limit=12&rating=G')
         .then(mostrartendencias);
 };
-//////////////////////muestra las tendencias//////////////////////////////
+
 function mostrartendencias(datos) {
     for (i = 0; i < datos.data.length; i++) {
         let tendenciasContainer = document.getElementById('contenedor-tendencias');
@@ -102,7 +100,7 @@ function mostrartendencias(datos) {
         });
     };
 };
-//////////////////Realizar busquedas////////////////////////
+
 function getApiResults() {
     let busqueda = document.getElementById('input-buscar').value;
     historialDeBusqueda.push(busqueda);
@@ -112,6 +110,7 @@ function getApiResults() {
         .then(mostrarUltimaBusqueda)
         .then(desactivarBotonBuscar)
 };
+
 function busquedasEncontradas(datos) {
     let contenedorImagen = document.getElementById('contenedorDeBusqueda');
     let gifsEncontrados = document.createElement('div');
@@ -126,7 +125,7 @@ function busquedasEncontradas(datos) {
     contenedorImagen.innerHTML = gifsEncontrados.innerHTML;
     limpiarInput();
 };
-///////////////////////Elegir theme////////////////////////////////
+
 function elegirTema() {
     let menu = document.getElementById('menu-temas');
     menu.style.display = 'flex';
@@ -135,7 +134,7 @@ function elegirTema() {
     });
     event.stopPropagation()
 };
-//////////////////Cambiar theme Dark//////////////////////////
+
 function cambiarTemaDark() {
     let logoSailorDark = document.getElementById('logo-day-gifos');
     logoSailorDark.id = 'gifOF_logo';
@@ -143,7 +142,7 @@ function cambiarTemaDark() {
     let body = document.body;
     body.className = 'modo-dark';
 };
-/////////////////Cambiar theme Day/////////////////////////////////
+
 function cambiarTemaDay() {
     let logoSailorDark = document.getElementById('gifOF_logo');
     logoSailorDark.id = 'logo-day-gifos';
@@ -151,7 +150,7 @@ function cambiarTemaDay() {
     let body = document.body;
     body.className = 'day';
 };
-///////////////////Display menu cuando se escribe en el input////////////////////
+
 function displayMenuBuscador() {
     let busqueda = document.getElementById('input-buscar').value;
     let menu = document.getElementById('menu-opciones');
@@ -166,7 +165,7 @@ function displayMenuBuscador() {
         });
     };
 };
-//////////////////Habilita boton de busqueda//////////////////////
+
 function habilitarBotonBuscar() {
     let boton = document.getElementById("buscar");
     let lupa = document.getElementById('lupa');
@@ -177,14 +176,14 @@ function habilitarBotonBuscar() {
         boton.className = 'boton-habilitado';
     }
 };
-///////////////Desactiva boton buscar//////////////////////
+
 function desactivarBotonBuscar() {
     let lupa = document.getElementById('lupa');
     lupa.src = './imagenes/lupa_inactive.svg';
     let boton = document.getElementById("buscar");
     boton.classList.toggle("buscar");
 };
-////////////////////////Menu de otras opciones de busqueda///////////
+
 const opciones = ['Giphys más buscados', 'Tendencias 2020', 'Lugares maravillosos',
     'Caidas graciosas', 'Oscar´s 2020', 'Coronavirus', 'Kisses', 'Mate',
     'Argentina', 'Winter is coming', 'Add, commit & push'];
@@ -211,8 +210,7 @@ function guardarBusquedas() {
     if (historialLocalStorage !== null) {
         let historialLS = JSON.parse(historialLocalStorage);
         return historialLS
-    }
-
+    };
 };
 
 async function getFormLocalStorage() {
@@ -231,12 +229,13 @@ async function getFormLocalStorage() {
 
         });
     });
-}
+};
+
 function postLocalStorage() {
     sendHistorial = { 'buscados': historialDeBusqueda }
     historialJSON = JSON.stringify(sendHistorial);
     localStorage.setItem('Busquedas realizadas', historialJSON);
-    console.log(historialDeBusqueda);
+
 }
 
 function mostrarUltimaBusqueda() {
@@ -262,7 +261,7 @@ function limpiarInput() {
     let buscador = document.getElementById('input-buscar');
     buscador.value = '';
 };
-/////////////////////////////////////Ir a mis guifos////////////
+
 function getMisGuifos() {
     let contenedorMisGuifos = document.getElementById('contenedor_mis_guifos');
     let divAOcultarUno = document.getElementById('buscador');
@@ -275,7 +274,8 @@ function getMisGuifos() {
         divAOcultarTres.style.display = 'none';
         contenedorMisGuifos.style.display = 'block';
     };
-}
+};
+
 function eventos() {
     document.getElementById('input-buscar').addEventListener('keyup', displayMenuBuscador);
     document.getElementById('input-buscar').addEventListener('change', habilitarBotonBuscar);

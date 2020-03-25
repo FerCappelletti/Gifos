@@ -628,7 +628,7 @@ img {
 
 .modo-dark .cabecera button {
   background: #EE3EFE;
-  border: 1px #110038;
+  border: 0 1px 0 0 #110038;
   -webkit-box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
           box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
   color: #FFFFFF;
@@ -658,7 +658,7 @@ img {
 }
 
 .modo-dark #buscador #div-input button {
-  border: 1px #110038;
+  border: 0 1px 0 0 #110038;
   -webkit-box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
           box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
   color: #B4B4B4;

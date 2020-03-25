@@ -2,7 +2,6 @@ window.onload = onloadMisGuifos;
 
 function onloadMisGuifos(){
     mostrarMisGifos();
-    //getGifosFormLocalStorage()
     eventosPaginaCrearGuifos();
 }
 const apiKey = 'dkVRyCXXNDv7wwCKsRBvO6XVQ5xtqNNi';
@@ -15,7 +14,7 @@ const constraints = {
     }
 }
 
-///////////////////////Elegir theme////////////////////////////////
+
 function elegirTema() {
     let menu = document.getElementById('menu-temas');
     menu.style.display = 'flex';
@@ -24,7 +23,7 @@ function elegirTema() {
     });
     event.stopPropagation()
 };
-//////////////////Cambiar theme Dark//////////////////////////
+
 function cambiarTemaDark() {
     let logoSailorDark = document.getElementById('logo-day-gifos');
     logoSailorDark.id = 'gifOF_logo';
@@ -32,7 +31,7 @@ function cambiarTemaDark() {
     let body = document.body;
     body.className = 'modo-dark';
 };
-/////////////////Cambiar theme Day/////////////////////////////////
+
 function cambiarTemaDay() {
     let logoSailorDark = document.getElementById('gifOF_logo');
     logoSailorDark.src = './imagenes/gifOF_logo.png';
@@ -49,11 +48,18 @@ let capture = document.getElementById('capturando');
 let sub = document.getElementById('subiendo');
 let exito = document.getElementById('exito');
 
+
 function instrucciones() {
     cont.style.display = 'none';
     misGuifos.style.display = 'none';
     cont2.style.display = 'block';
     inst.style.display = 'block';
+}
+
+
+async function accesoCamara() {
+    let stream = await navigator.mediaDevices.getUserMedia(constraints);
+    return stream;
 }
 
 function comenzarACrearGifos() {
@@ -64,10 +70,6 @@ function comenzarACrearGifos() {
     getVideo();
 };
 
-async function accesoCamara() {
-    let stream = await navigator.mediaDevices.getUserMedia(constraints);
-    return stream;
-}
 
 async function getVideo() {
     let video = document.getElementById('video')
@@ -154,7 +156,7 @@ async function formData() {
     let blob = await recorder.getBlob()
     form.append('file', blob, 'myGif.gif');
     form.append('api_key', apiKey)
-    console.log(form.get('file'));
+
     subirGif(form);
 }
 function gifSubiendo() {
@@ -169,7 +171,6 @@ async function subirGif(form) {
         body: form,
     }).then(function (response) {
         if (response.ok) {
-            console.log(response)
             return response.json();
         } else {
             throw "Error en la llamada";
@@ -179,22 +180,19 @@ async function subirGif(form) {
         misGif.unshift(gifId)
         displayExito();
         postGifLocalStorage()
+        mostrarMisGifos();
     }).then((gif) => {
         guardarMisGuifos(gif);
     })
 };
-//////////////////////////////////////////////////////
 
 function postGifLocalStorage(){
 
     todosMisGifos = {'gifosReady': misGif}
     todosMisGifosJS = JSON.stringify(todosMisGifos);
     localStorage.setItem('Mis Guifos', todosMisGifosJS)
-    console.log(misGif)
 }
-///////////
 
-////////////////
 let misGif = [];
 function guardarMisGuifos(){
     let gifosJS = localStorage.getItem('Mis Guifos');
@@ -213,7 +211,7 @@ async function mostrarMisGifos (){
         let url = `https://media1.giphy.com/media/${element}/giphy.gif?cid=52afa79a31b48e99d4268c4cc71df9dcbf8f8b3c9db10a07&rid=giphy.gif`
        gif.src =  url;
 
-       console.log(gif)
+
        let cuadroMisGuifos = document.getElementById('contenedor-mis-guifos');
        gif.style.padding ='5px'
        cuadroMisGuifos.appendChild(gif);
@@ -235,6 +233,7 @@ async function mostrarMisGifos (){
 async function displayExito() {
     sub.style.display = 'none';
     exito.style.display = 'block';
+
     let miGifSubido = document.createElement('img');
     let gifContainer = document.getElementById('sub-exito');
     gifContainer.insertAdjacentElement('afterbegin', miGifSubido);
