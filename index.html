@@ -15,12 +15,15 @@
     <header class="barra-gradient">
         <p>¡Bienvenidos/as a Guifos.com! ——————Donde los gifs están.////// Número de visitas: 12.765.803</p>
     </header>
-    <section-1>
-        <div id="contenedor" class="contenedor">
+
+        <div class="contenedor">
             <div class="cabecera">
-                <div class="imagenes"><img src="./imagenes/gifOF_logo.png" alt="logo-gif-day" id="logo-day"></div>
-                <div class="contenedor-botones">
-                    <button id="btn-1"><a href="crear_guifos.html">Crear Guifos</button></a>
+                <div>
+                    <img src="./imagenes/gifOF_logo.png" alt="logo-gif-day" id="logo-day"
+                        onclick="window.location.href = 'index.html'">
+                </div>
+                <div class="cabecera">
+                    <button id="btn-1" onclick="window.location.href = 'crear_guifos.html'">Crear Guifos</button>
                     <div id="elegir-tema">
                         <div id="btn-tema">
                             <button id="btn-2">Elegir tema</button>
@@ -32,11 +35,11 @@
                             <button id="dark">Sailor Dark</button>
                         </div>
                     </div>
-                    <button id="btn-4">Mis Guifos</button>
+                    <button id="btn-4" onclick="window.location.href = 'crear_guifos.html'">Mis Guifos</button>
                 </div>
             </div>
-    </section-1>
-    <section-2>
+
+
         <div id="buscador">
             <div class="barra-gradient" id="barra-superior">
                 <p>Buscar</p>
@@ -44,30 +47,23 @@
             <div id="div-input">
                 <input type="search" id="input-buscar" placeholder="Busca gifs, hashtags, temas, busca lo que quieras…">
                 <button class="buscar" id="buscar" disabled><img src="./imagenes/lupa_inactive.svg" alt="lupa"
-                        id="lupa">
-                    <p id="palabra-buscar">Buscar</p>
-                </button>
+                        id="lupa">Buscar</button>
             </div>
-            <div class="menu-opciones" id="menu-opciones">
-            </div>
+            <div class="menu-opciones" id="menu-opciones"></div>
             <div class="buscados" id="botones-de-busquedas"></div>
-            <div class="contenedores" id="contenedorDeBusqueda"></div>
         </div>
-    </section-2>
-    <section-3>
+        <div class="contenedores" id="contenedorDeBusqueda"></div>
+
         <div id="contenedor-sugerencias" class="contenedores">
-            <input type="text" placeholder="Hoy te sugerimos" id="input-2" class="input"></input>
+            <input type="text" placeholder="Hoy te sugerimos" id="input-2" class="input">
         </div>
         <div id="contenedor-tendencias" class="contenedores">
-            <input type="text" placeholder="Tendencias" id="input-3" class="input"></input>
+            <input type="text" placeholder="Tendencias" id="input-3" class="input">
 
         </div>
-        <div id="contenedor_mis_guifos" class="contenedores">
-            <input type="text" placeholder="Mis Guifos" id="input-4" class="input"></input>
-        </div>
-    </section-3>
     </div>
+
     <script src="gifos.js"></script>
 </body>
-
 </html>
+

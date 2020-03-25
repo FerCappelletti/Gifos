@@ -13,7 +13,7 @@
   height: 24px;
 }
 
-.contenedor-botones button, .contenedor-botones .btn-blancos, .boton-habilitado, .modo-dark .contenedor-botones button {
+button, .btn-blancos, .boton-habilitado, .modo-dark .cabecera button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -38,16 +38,16 @@
   width: 140px;
 }
 
-.contenedor-botones button:hover, .contenedor-botones .btn-blancos:hover, .boton-habilitado:hover {
+button:hover, .btn-blancos:hover, .boton-habilitado:hover, .modo-dark .cabecera button:hover {
   border: 1px dotted #110038;
   cursor: pointer;
 }
 
-.contenedor-botones button:active, .contenedor-botones .btn-blancos:active, .boton-habilitado:active {
+button:active, .btn-blancos:active, .boton-habilitado:active, .modo-dark .cabecera button:active {
   border: 1px dotted #110038;
 }
 
-.contenedor-botones button a, .contenedor-botones .btn-blancos a, .boton-habilitado a, .modo-dark .contenedor-botones button a {
+button a, .btn-blancos a, .boton-habilitado a, .modo-dark .cabecera button a {
   color: #110038;
 }
 
@@ -86,7 +86,7 @@
   color: #FFFFFF;
   font-family: "Chakra Petch", sans-serif;
   font-size: 14px;
-  margin: 10px;
+  margin: 5px;
   overflow: hidden;
 }
 
@@ -107,7 +107,7 @@
           box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;
 }
 
-.input, #contador {
+.input, #contador, #subiendo-guifo {
   background: #FFFAFE;
   border: 1px solid #E6BBE2;
   -webkit-box-shadow: inset -2px -2px 0 0 #E6DCE4, inset 2px 2px 0 0 #80687D;
@@ -117,7 +117,7 @@
   padding: 5px;
 }
 
-.barra-gradient p, #buscador #div-input button p, .buscados p, .menu-opciones div, #crear_guifo p, #crear_guifo ol li, .modo-dark #buscador #div-input button p {
+.barra-gradient p, .buscados p, .menu-opciones div, #crear_guifo p, #crear_guifo ol li, #subiendo-guifo p, #sub-exito p {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
@@ -145,16 +145,16 @@ body {
           justify-content: space-between;
 }
 
+img {
+  cursor: pointer;
+}
+
 .contenedor {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
   padding: 40px;
-}
-
-a {
-  text-decoration: none;
 }
 
 .cabecera {
@@ -168,26 +168,6 @@ a {
           justify-content: space-between;
 }
 
-.cabecera .imagenes {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.cabecera .imagenes img {
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
-  cursor: pointer;
-  margin: 5px;
-}
-
 .contenedor-botones {
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -198,36 +178,31 @@ a {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  padding: 5px;
 }
 
-.contenedor-botones .btn-blancos {
+.btn-blancos {
   background: #FFFFFF;
   margin: 5px;
 }
 
-.contenedor-botones .btn-blancos:hover {
+.btn-blancos:hover {
   background: #F7C9F3;
 }
 
-.contenedor-botones .btn-rojo {
+.btn-rojo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  display: none;
-}
-
-.contenedor-botones .btn-rojo button {
   background: #FF6161;
   margin: 0px;
 }
 
-.contenedor-botones .btn-3 {
+.btn-3 {
   margin-left: 0px;
   width: 25px;
 }
 
-.contenedor-botones #btn-4 {
+#btn-4 {
   background: none;
   border: none;
   -webkit-box-shadow: none;
@@ -237,27 +212,15 @@ a {
   width: 100px;
 }
 
-.contenedor-botones #btn-4:active {
+#btn-4:active {
   border: none;
 }
 
-.contenedor-botones #btn-4:hover {
+#btn-4:hover {
   border: 1px dotted #110038;
 }
 
-#ocultar {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
 #elegir-tema {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -308,9 +271,6 @@ a {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: baseline;
-      -ms-flex-pack: baseline;
-          justify-content: baseline;
   margin: 50px 0px 25px 0px;
 }
 
@@ -339,17 +299,13 @@ a {
 #buscador #div-input button {
   -ms-flex-item-align: center;
       align-self: center;
+  color: #B4B4B4;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   height: 30px;
-  margin: 10px;
-  width: 100px;
-}
-
-#buscador #div-input button p {
-  color: #B4B4B4;
   margin: 5px;
+  width: 100px;
 }
 
 #buscador #div-input button img {
@@ -363,17 +319,6 @@ a {
   width: 16px;
 }
 
-.boton-habilitado {
-  -ms-flex-item-align: center;
-      align-self: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  height: 30px;
-  margin: 10px;
-  width: 100px;
-}
-
 .boton-habilitado img {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
@@ -383,11 +328,6 @@ a {
           box-shadow: none;
   height: 16px;
   width: 16px;
-}
-
-.boton-habilitado p {
-  color: #110038;
-  margin: 5px;
 }
 
 .buscados {
@@ -405,6 +345,7 @@ a {
 .buscados button {
   height: 24px;
   margin: 5px;
+  overflow: hidden;
 }
 
 .buscados button::before {
@@ -440,6 +381,7 @@ a {
 }
 
 .input {
+  margin: 25px 0px 25px 0px;
   width: 1255px;
 }
 
@@ -545,7 +487,6 @@ a {
 }
 
 #contenedor_mis_guifos {
-  display: none;
   padding: 5px;
 }
 
@@ -557,10 +498,14 @@ a {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin: 50px;
-  margin-left: 350px;
-  width: 50%;
+  margin: 20px 290px 20px 290px;
   padding: 5px;
+}
+
+.contenedor_guifos video {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 #crear_guifo p {
@@ -589,8 +534,87 @@ a {
   width: 100px;
 }
 
+#subiendo-guifo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 250px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#subiendo-guifo p {
+  color: #110038;
+  font-weight: bold;
+}
+
+#exito {
+  display: none;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+#exito button {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin: 5px;
+}
+
+#sub-exito {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 10px;
+}
+
+#sub-exito p {
+  color: #110038;
+  font-weight: bold;
+}
+
+#sub-exito button {
+  width: 200px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+#gif {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#gif img {
+  width: 100%;
+}
+
+#contenedor-2,
+#instrucciones,
+#chequeo,
+#capturando,
+#vista-previa,
+#subiendo,
 #btn-captura {
   display: none;
+}
+
+#gif,
+#video {
+  width: 100%;
 }
 
 .modo-dark .contenedor {
@@ -602,20 +626,25 @@ a {
   background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
 }
 
-.modo-dark .contenedor-botones button {
+.modo-dark .cabecera button {
   background: #EE3EFE;
-  border: 0 1px 0 0 #110038;
+  border: 1px #110038;
   -webkit-box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
           box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
   color: #FFFFFF;
 }
 
-.modo-dark .contenedor-botones button a {
+.modo-dark .cabecera button a {
   color: #FFFFFF;
 }
 
-.modo-dark .contenedor-botones button:hover {
+.modo-dark .cabecera button:hover {
   border: 1px dotted #FFFFFF;
+}
+
+.modo-dark .cabecera .btn-3 {
+  margin-left: 0px;
+  width: 25px;
 }
 
 .modo-dark #gifOF_logo {
@@ -629,18 +658,13 @@ a {
 }
 
 .modo-dark #buscador #div-input button {
-  border: 0 1px 0 0 #110038;
+  border: 1px #110038;
   -webkit-box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
           box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
   color: #B4B4B4;
 }
 
 .modo-dark #buscador #div-input button img {
-  margin: 0px;
-}
-
-.modo-dark #buscador #div-input button p {
-  color: #8F8F8F;
   margin: 0px;
 }
 

@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Crear Guifos</title>
     <link href="https://fonts.googleapis.com/css?family=Chakra+Petch&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/RecordRTC/5.5.8/RecordRTC.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/RecordRTC/5.5.8/RecordRTC.js"></script>
 
 
 </head>
@@ -16,24 +17,59 @@
     <header class="barra-gradient">
         <p>¡Bienvenidos/as a Guifos.com! ——————Donde los gifs están.////// Número de visitas: 12.765.803</p>
     </header>
-    <section-1>
-        <div class="cabecera">
-            <div class="imagenes">
-                <a href="index.html"><img src="./imagenes/arrow.svg" alt="flecha-volver" id="flecha-volver"></a>
-                <img src="./imagenes/gifOF_logo.png" alt="logo-gif-day" id="logo-day">
+    <div class="contenedor">
+        <div class="contenedor" id="contenedor-1">
+            <div class="cabecera">
+                <div>
+                    <img src="./imagenes/gifOF_logo.png" alt="logo-gif-day" id="logo-day"
+                        onclick="window.location.href = 'index.html'">
+                </div>
+
+                <div class="cabecera">
+                    <button id="btn-1">Crear Guifos</button>
+                    <div id="elegir-tema">
+
+                        <div id="btn-tema">
+                            <button id="btn-2">Elegir tema</button>
+                            <button class="btn-3" id="btn-3"><img src="./imagenes/dropdown.svg" alt="drop"
+                                    id="drop"></button>
+                        </div>
+                        <div id="menu-temas">
+                            <button id="day">Sailor Day</button>
+                            <button id="dark">Sailor Dark</button>
+                        </div>
+                    </div>
+                    <button id="btn-4">Mis Guifos</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="contenedor-mis-guifos" class="contenedor">
+            <input type="text" placeholder="Mis Guifos" id="input-4" class="input">
+        </div>
+
+        <div class="contenedor" id="contenedor-2">
+            <div class="cabecera">
+                <div>
+                    <a href="index.html"><img src="./imagenes/arrow.svg" alt="flecha-volver" id="flecha-volver"></a>
+                    <img src="./imagenes/gifOF_logo.png" alt="logo-gif-day" id="logo-day-gifos">
+                </div>
             </div>
 
         </div>
-        <div id="contenedor_guifos" class="contenedor_guifos">
+
+        <div id="instrucciones" class="contenedor_guifos">
             <div class="barra-gradient">
                 <p>Crear Guifos</p>
+                <img src="./imagenes/close.svg" alt="close">
             </div>
             <div class="buscados">
-                <img src="./imagenes/window img.png" alt="window">
+                <img src="./imagenes/window.png" alt="window">
                 <p>Aquí podrás crear tus propios guifos</p>
             </div>
             <div id="crear_guifo">
-                <p>Crear tu <i><b>guifo</b></i> es muy fácil, graba cualquier imagen con tu cámara y obtén guifos
+                <p id="parrafo">Crear tu <i><b>guifo</b></i> es muy fácil, graba cualquier imagen con tu cámara y obtén
+                    guifos
                     personalizados.
                     Los pasos para crear tu guifo son:</p>
                 <ol>
@@ -46,48 +82,83 @@
                 <p>¿Quieres comenzar a crear tu <i><b>guifo</b></i> ahora?</p>
             </div>
             <div class="contenedor-botones">
-                <button id="cancelar" class="btn-blancos">Cancelar</button>
+                <button class="btn-blancos" onclick="window.location.href = 'crear_guifos.html'">Cancelar</button>
                 <button id="comenzar" class="btn-blancos">Comenzar</button>
             </div>
         </div>
-    </section-1>
-    <!--aca va lo del chequeo de la camara/ display none hasta que hagan click comenzar-->
-    <section-2>
-        <div class="contenedor_guifos" id="contenedor_mis_guifos">
-            <div class="barra-gradient" id="barra-superior">
-                <p id="captura-gif">Un Chequeo Antes de Empezar</p>
-                <img src="./imagenes/close.svg" id="">
-            </div>
-            <div class="giphy-sugerido" id="encabezado_mis_guifos">
-                <video alt="" id="video"></video>
 
-                <img id="gif"></img>
+        <div id="chequeo" class="contenedor_guifos">
+            <div class="barra-gradient">
+                <p id="aCambiar">Un chequeo antes de empezar</p>
+                <img src="./imagenes/close.svg" alt="close">
             </div>
 
-            <div class="contenedor-botones" id="ocultar">
-                <div id="contador">1234656</div>
-                <div class="contenedor-botones">
-                    <button class="btn-3" id="btn-camara"><img src="./imagenes/camera.svg" alt="camara"
-                            id="camara"></button>
-                    <button id="capturar">Capturar</button>
+                <video id="video"></video>
+
+                <div id="gif"></div>
+
+            <div class="contenedor-botones" id="btn-controles">
+                <button class="btn-3" id="btn-camara"><img src="./imagenes/camera.svg" alt="camara"
+                        id="camara"></button>
+                <button id="capturar">Capturar</button>
+            </div>
+
+            <div class="cabecera" id="capturando">
+                <div id="contador">
+                    <span id="hora">00:</span>
+                    <span id="minutos">00:</span>
+                    <span id="segundos">00</span>:
+                    <span id="milisegundos">00</span>
                 </div>
-            </div>
-            <div class="contenedor-botones">
-                <div class="btn-rojo" id="btn-grabar">
-                    <button class="btn-3"><img src="./imagenes/recording.svg" alt="camara"></button>
-                    <button id="stop">Listo</button>
-                </div>
-            </div>
 
-            <div class="contenedor-botones" id="btn-captura">
-                <button id="repetir-captura" class="btn-blancos">Repetir captura</button>
-                <button id="subir-guifo" class="btn-blancos">Subir Guifo</button>
+                <div class="contenedor-botones" id="btn-grabar">
+                    <button class="btn-3 btn-rojo"><img src="./imagenes/recording.svg" alt="camara"></button>
+                    <button id="stop" class="btn-rojo">Listo</button>
+                </div>
+
+                <div class="contenedor-botones" id="btn-captura">
+                    <button class="btn-blancos" onclick="window.location.href = 'crear_guifos.html'">Repetir captura</button>
+                    <button id="subir-guifo" class="btn-blancos">Subir Guifo</button>
+                </div>
+
             </div>
         </div>
 
+        <div class="contenedor" id="subiendo">
+            <div class="contenedor_guifos">
+                <div class="barra-gradient">
+                    <p>Subiendo tu guifo</p>
+                    <img src="./imagenes/close.svg" alt="close">
+                </div>
+
+                <div id="subiendo-guifo">
+                    <img src="/imagenes/globe_img.png" alt="subiendo">
+                    <p>Estamos subiendo tu guifo...</p>
+                </div>
+                <button class="btn-blancos" style="margin-left: 75%;" id="cancelar"
+                    onclick="window.location.href = 'crear_guifos.html'">Cancelar</button>
+            </div>
         </div>
-    </section-2>
-    <script src="crear_guifos.js"></script>
+
+        <div class="contenedor_guifos" id="exito">
+            <div class="barra-gradient">
+                <p>Guifo subido con éxito</p>
+                <img src="./imagenes/close.svg" alt="close">
+            </div>
+
+            <div id="sub-exito">
+
+                <div>
+                    <p>Guifo creado con éxito</p>
+                    <button class="btn-blancos" id="enlace-guifo">Copiar enlace Guifo</button>
+                    <button id="descargar-guifo" class="btn-blancos">Descagar Guifo</button>
+
+                </div>
+            </div>
+            <button onclick="window.location.href = 'crear_guifos.html'">Listo</button>
+        </div>
+        <script src="crear_guifos.js"></script>
+    </div>
 </body>
 
 </html>

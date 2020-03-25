@@ -17,15 +17,14 @@ body {
     }
 }
 
+img {
+    cursor: pointer;
+}
+
 ///////////div container//////////
 .contenedor {
     flex-direction: column;
     padding: 40px;
-}
-
-/////////////////////////
-a {
-    text-decoration: none;
 }
 
 ///////////////cabecera////////
@@ -33,81 +32,58 @@ a {
     align-content: center;
     display: flex;
     justify-content: space-between;
-
-    .imagenes {
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
-
-        img {
-            align-self: center;
-            cursor: pointer;
-            margin: 5px;
-        }
-    }
 }
+
 
 .contenedor-botones {
     align-items: center;
     display: flex;
     justify-content: flex-end;
-    padding: 5px;
+}
 
-    button {
-        @extend %boton;
-    }
+button {
+    @extend %boton;
+}
 
-    .btn-blancos {
-        @extend %boton;
-        background: $fondo-Day;
-        margin: 5px;
+.btn-blancos {
+    @extend %boton;
+    background: $fondo-Day;
+    margin: 5px;
 
-        &:hover {
-            background: #F7C9F3;
-        }
-    }
-
-    .btn-rojo {
-        display: flex;
-        display: none;
-
-        button {
-            background: #FF6161;
-            margin: 0px;
-        }
-
-    }
-
-    .btn-3 {
-        margin-left: 0px;
-        width: 25px;
-    }
-
-    #btn-4 {
-        background: none;
-        border: none;
-        box-shadow: none;
-        margin-left: 20px;
-        text-align: left;
-        width: 100px;
-
-        &:active {
-            border: none;
-        }
-
-        &:hover {
-            border: $border;
-        }
+    &:hover {
+        background: #F7C9F3;
     }
 }
 
-#ocultar {
+.btn-rojo {
     display: flex;
-    justify-content: space-between;
+    background: #FF6161;
+    margin: 0px;
+}
+
+.btn-3 {
+    margin-left: 0px;
+    width: 25px;
+}
+
+#btn-4 {
+    background: none;
+    border: none;
+    box-shadow: none;
+    margin-left: 20px;
+    text-align: left;
+    width: 100px;
+
+    &:active {
+        border: none;
+    }
+
+    &:hover {
+        border: $border;
+    }
 }
 
 #elegir-tema {
-    display: flex;
     flex-direction: column;
 
     #btn-tema {
@@ -146,7 +122,7 @@ a {
     @extend %container;
     display: flex;
     flex-direction: column;
-    justify-content: baseline;
+    //justify-content: baseline;
     margin: 50px 0px 25px 0px;
 
     div {
@@ -169,16 +145,11 @@ a {
         button {
             @extend %boton-menu-temas;
             align-self: center;
+            color: #B4B4B4;
             display: flex;
             height: 30px;
-            margin: 10px;
+            margin: 5px;
             width: 100px;
-
-            p {
-                @extend %p;
-                color: #B4B4B4;
-                margin: 5px;
-            }
 
             img {
                 align-self: center;
@@ -194,11 +165,6 @@ a {
 /////////////////////////boton cuando está habilitado////////////////////////////////////
 .boton-habilitado {
     @extend %boton;
-    align-self: center;
-    display: flex;
-    height: 30px;
-    margin: 10px;
-    width: 100px;
 
     img {
         align-self: center;
@@ -207,14 +173,9 @@ a {
         height: 16px;
         width: 16px;
     }
-
-    p {
-        color: $fondo-dark;
-        margin: 5px;
-    }
 }
 
-/////////////////////////div de botones celestes busquedas realizadas////////////////////
+
 .buscados {
     display: flex;
     height: 30px;
@@ -226,6 +187,7 @@ a {
         @extend %botones-celestes;
         height: 24px;
         margin: 5px;
+        overflow: hidden;
 
         &::before {
             content: "#";
@@ -260,6 +222,7 @@ a {
 
 .input {
     @extend %container-input;
+    margin: 25px 0px 25px 0px;
     width: 1255px;
 }
 
@@ -344,7 +307,7 @@ a {
 ////////////////////////style mis guifos/////////////////////////////////////////////////////
 #contenedor_mis_guifos {
     @extend %container;
-    display: none;
+    //display: none;
     padding: 5px;
 }
 
@@ -352,23 +315,12 @@ a {
     @extend %container;
     display: flex;
     flex-direction: column;
-    margin: 50px;
-    margin-left: 350px;
-    width: 50%;
+    margin: 20px 290px 20px 290px;
     padding: 5px;
+    video{
+        align-self: center;
+    }
 }
-
-// #comenzar,
-// #cancelar,
-// #repetir-captura,
-// #subir-guifo {
-//     background-color: $fondo-Day;
-
-//     &:hover {
-//         background-color: #F7C9F3;
-//         ;
-//     }
-// }
 
 #crear_guifo {
     p {
@@ -401,8 +353,66 @@ a {
     width: 100px;
 }
 
+#subiendo-guifo {
+    @extend %container-input;
+    display: flex;
+    height: 250px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+        @extend %p;
+        color: $fondo-dark;
+        font-weight: bold;
+    }
+}
+
+#exito {
+    display: none;
+    justify-content: space-around;
+
+    button {
+        align-self: flex-end;
+        margin: 5px;
+    }
+}
+
+#sub-exito {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 10px;
+
+    p {
+        @extend %p;
+        color: $fondo-dark;
+        font-weight: bold;
+    }
+
+    button {
+        width: 200px;
+        align-self: flex-end;
+    }
+}
+#gif{
+    display: flex;
+    img{
+        width: 100%;
+    }
+}
+#contenedor-2,
+#instrucciones,
+#chequeo,
+#capturando,
+#vista-previa,
+#subiendo,
 #btn-captura {
     display: none;
+}
+#gif,
+#video{
+    width: 100%;
 }
 
 ///////////////////////////class dark////////////////////////////////////////
@@ -415,7 +425,7 @@ a {
         background-image: $color-gradiente-dark;
     }
 
-    .contenedor-botones {
+    .cabecera {
         button {
             @extend %boton;
             background: $background-2;
@@ -430,6 +440,11 @@ a {
             &:hover {
                 border: 1px dotted #FFFFFF;
             }
+        }
+
+        .btn-3 {
+            margin-left: 0px;
+            width: 25px;
         }
     }
 
@@ -455,12 +470,6 @@ a {
                 color: #B4B4B4;
 
                 img {
-                    margin: 0px;
-                }
-
-                p {
-                    @extend %p;
-                    color: #8F8F8F;
                     margin: 0px;
                 }
             }
