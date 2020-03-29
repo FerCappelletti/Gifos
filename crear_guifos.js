@@ -1,7 +1,7 @@
+mostrarMisGifos();
 window.onload = onloadMisGuifos;
 
-function onloadMisGuifos(){
-    mostrarMisGifos();
+function onloadMisGuifos() {
     eventosPaginaCrearGuifos();
 }
 const apiKey = 'dkVRyCXXNDv7wwCKsRBvO6XVQ5xtqNNi';
@@ -176,59 +176,63 @@ async function subirGif(form) {
             throw "Error en la llamada";
         }
     }).then((datos) => {
-        gifId = datos.data.id;
-        misGif.unshift(gifId)
+        id = datos.data.id;
         displayExito();
-        postGifLocalStorage()
-        mostrarMisGifos();
-    }).then((gif) => {
-        guardarMisGuifos(gif);
+        return id
+    }).then((id) => {
+        //meterNuevo(id);
+        guardarGifos(id)
     })
 };
 
-function postGifLocalStorage(){
+function guardarGifos(id) {
+    let misGifos = [];
+    let gifosLocalStorage = localStorage.getItem('Mis gifos');
+    if (gifosLocalStorage !== null) {
+        let misGifos = JSON.parse(gifosLocalStorage);
+        misGifos.push(id);
 
-    todosMisGifos = {'gifosReady': misGif}
-    todosMisGifosJS = JSON.stringify(todosMisGifos);
-    localStorage.setItem('Mis Guifos', todosMisGifosJS)
-}
-
-let misGif = [];
-function guardarMisGuifos(){
-    let gifosJS = localStorage.getItem('Mis Guifos');
-    if(gifosJS !== null){
-    let gifLS = JSON.parse(gifosJS);
-    return gifLS
+        localStorage.setItem('Mis gifos', JSON.stringify(misGifos));
+    } else {
+        misGifos.unshift(id);
+        localStorage.setItem('Mis gifos', JSON.stringify(misGifos))
     }
+mostrarMisGifos();
 }
 
-async function mostrarMisGifos (){
-    let gifosFromLS = await guardarMisGuifos();
-    let gifosReady = gifosFromLS.gifosReady;
-    gifosReady.forEach(element => {
-        misGif.unshift(element);
-        let gif = document.createElement('img');
-        let url = `https://media1.giphy.com/media/${element}/giphy.gif?cid=52afa79a31b48e99d4268c4cc71df9dcbf8f8b3c9db10a07&rid=giphy.gif`
-       gif.src =  url;
 
 
-       let cuadroMisGuifos = document.getElementById('contenedor-mis-guifos');
-       gif.style.padding ='5px'
-       cuadroMisGuifos.appendChild(gif);
+async function mostrarMisGifos() {
 
+    let gifosFromLS = await JSON.parse(localStorage.getItem('Mis gifos'))
+    let cuadroMisGuifos = document.getElementById('contenedor-mis-guifos')
+    
+    if(gifosFromLS !== null){
+
+        gifosFromLS.forEach(element => {
+            
+            let gif = document.createElement('img');
+            let url = `https://media1.giphy.com/media/${element}/giphy.gif?cid=52afa79a31b48e99d4268c4cc71df9dcbf8f8b3c9db10a07&rid=giphy.gif`
+        gif.src = url;
+        
+
+        gif.style.padding = '5px'
+        cuadroMisGuifos.appendChild(gif);
+        
         let linkBtn = document.getElementById('enlace-guifo');
         linkBtn.addEventListener('click', () => {
-       let link = document.createElement("input");
-       link.setAttribute('value', url);
-       document.body.appendChild(link)
-       link.select();
-       document.execCommand('copy');
-       document.body.removeChild(link);
-       alert('Link de tu guifo copiado al portapapeles')
-
+            let link = document.createElement("input");
+            link.setAttribute('value', url);
+            document.body.appendChild(link)
+            link.select();
+            document.execCommand('copy');
+            document.body.removeChild(link);
+            alert('Link de tu guifo copiado al portapapeles')
+            
         });
     });
 };
+}
 
 async function displayExito() {
     sub.style.display = 'none';

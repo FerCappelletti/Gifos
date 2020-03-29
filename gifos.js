@@ -2,11 +2,10 @@ window.onload = cargaPagina;
 const apiKey = 'dkVRyCXXNDv7wwCKsRBvO6XVQ5xtqNNi';
 
 function cargaPagina() {
-    getFormLocalStorage();
     mostrarSugerenciasPorCuatro();
     getTendencias();
     eventos();
-    opcionesDeOtrasBusquedas();¿
+    opcionesDeOtrasBusquedas();
 }
 
 async function getApi(url) {
@@ -103,27 +102,29 @@ function mostrartendencias(datos) {
 
 function getApiResults() {
     let busqueda = document.getElementById('input-buscar').value;
-    historialDeBusqueda.push(busqueda);
-    postLocalStorage();
     getApi('http://api.giphy.com/v1/gifs/search?q=' + busqueda + '&api_key=' + apiKey)
         .then(busquedasEncontradas)
+        .then(guardarBusquedas)
         .then(mostrarUltimaBusqueda)
-        .then(desactivarBotonBuscar)
+        //.then(limpiarInput)
+        .then(deshabilitarBoton)
 };
 
 function busquedasEncontradas(datos) {
+    let busqueda = document.getElementById('input-buscar').value;
     let contenedorImagen = document.getElementById('contenedorDeBusqueda');
     let gifsEncontrados = document.createElement('div');
-    gifsEncontrados.id = 'Busqueda';
-    gifsEncontrados.className = 'contenedor-de-giphys';
+    let resultadoBusqueda = document.createElement('div');
+    resultadoBusqueda.className = ('input') 
+    resultadoBusqueda.innerHTML = 'Acabas de buscar: ' + busqueda;
     for (i = 0; i < datos.data.length; i++) {
-
         let imagen = document.createElement('img');
         imagen.src = datos.data[i].images.downsized_large.url;
         gifsEncontrados.appendChild(imagen)
     };
+    gifsEncontrados.insertAdjacentElement('afterbegin', resultadoBusqueda)
     contenedorImagen.innerHTML = gifsEncontrados.innerHTML;
-    limpiarInput();
+
 };
 
 function elegirTema() {
@@ -169,21 +170,21 @@ function displayMenuBuscador() {
 function habilitarBotonBuscar() {
     let boton = document.getElementById("buscar");
     let lupa = document.getElementById('lupa');
-    let buscador = document.getElementById('input-buscar');
-    if (buscador.value) {
+    let buscador = document.getElementById('input-buscar').value;
+    if (buscador) {
         boton.disabled = false;
-        lupa.src = './imagenes/lupa.svg';
-        boton.className = 'boton-habilitado';
+        boton.classList.toggle("boton-habilitado");
+        lupa.src = ('./imagenes/lupa.svg')
     }
 };
 
-function desactivarBotonBuscar() {
-    let lupa = document.getElementById('lupa');
-    lupa.src = './imagenes/lupa_inactive.svg';
+function deshabilitarBoton() {
     let boton = document.getElementById("buscar");
-    boton.classList.toggle("buscar");
-};
-
+    let lupa = document.getElementById('lupa');
+    boton.className = ('buscar');
+    boton.setAttribute("disabled", "")
+    lupa.src = './imagenes/lupa_inactive.svg';
+}
 const opciones = ['Giphys más buscados', 'Tendencias 2020', 'Lugares maravillosos',
     'Caidas graciosas', 'Oscar´s 2020', 'Coronavirus', 'Kisses', 'Mate',
     'Argentina', 'Winter is coming', 'Add, commit & push'];
@@ -204,41 +205,23 @@ function opcionesDeOtrasBusquedas() {
     });
 }
 
-let historialDeBusqueda = [];
 function guardarBusquedas() {
+    let historialDeBusqueda = [];
+    let busqueda = document.getElementById('input-buscar').value;
     let historialLocalStorage = localStorage.getItem('Busquedas realizadas');
     if (historialLocalStorage !== null) {
-        let historialLS = JSON.parse(historialLocalStorage);
-        return historialLS
-    };
+        let historialDeBusqueda = JSON.parse(historialLocalStorage);
+        historialDeBusqueda.push(busqueda);
+
+        localStorage.setItem('Busquedas realizadas', JSON.stringify(historialDeBusqueda))
+    } else {
+        historialDeBusqueda.unshift(busqueda);
+        localStorage.setItem('Busquedas realizadas', JSON.stringify(historialDeBusqueda))
+    }
 };
 
-async function getFormLocalStorage() {
-    let historialFromLS = await guardarBusquedas();
-    let buscados = historialFromLS.buscados;
-    buscados.forEach(element => {
-        historialDeBusqueda.unshift(element)
-        let contenedorBotonesDeBusquedas = document.getElementById('botones-de-busquedas');
-        let botonBusquedasRealizadas = document.createElement('button');
-        botonBusquedasRealizadas.innerHTML = element
-        contenedorBotonesDeBusquedas.insertAdjacentElement('afterbegin', botonBusquedasRealizadas);
-        botonBusquedasRealizadas.addEventListener('click', () => {
-            let buscador = document.getElementById('input-buscar');
-            buscador.value = botonBusquedasRealizadas.textContent;
-            habilitarBotonBuscar();
-
-        });
-    });
-};
-
-function postLocalStorage() {
-    sendHistorial = { 'buscados': historialDeBusqueda }
-    historialJSON = JSON.stringify(sendHistorial);
-    localStorage.setItem('Busquedas realizadas', historialJSON);
-
-}
-
-function mostrarUltimaBusqueda() {
+async function mostrarUltimaBusqueda() {
+    let historialDeBusqueda = await JSON.parse(localStorage.getItem('Busquedas realizadas'));
     let contenedorBotonesDeBusquedas = document.getElementById('botones-de-busquedas');
     let botonBusquedasRealizadas = document.createElement('button');
     botonBusquedasRealizadas.innerHTML = historialDeBusqueda[historialDeBusqueda.length - 1];
@@ -279,7 +262,6 @@ function getMisGuifos() {
 function eventos() {
     document.getElementById('input-buscar').addEventListener('keyup', displayMenuBuscador);
     document.getElementById('input-buscar').addEventListener('change', habilitarBotonBuscar);
-    document.getElementById('input-buscar').addEventListener('focus', limpiarInput);
     document.getElementById('buscar').addEventListener('click', getApiResults);
     document.getElementById('btn-3').addEventListener('click', elegirTema);
     document.getElementById('dark').addEventListener('click', cambiarTemaDark);

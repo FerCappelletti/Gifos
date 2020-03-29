@@ -11,10 +11,13 @@ body {
     display: flex;
     height: 25px;
     justify-content: space-between;
+    overflow: hidden;
 
     p {
         @extend %p;
+        overflow: hidden;
     }
+
 }
 
 img {
@@ -122,7 +125,6 @@ button {
     @extend %container;
     display: flex;
     flex-direction: column;
-    //justify-content: baseline;
     margin: 50px 0px 25px 0px;
 
     div {
@@ -159,22 +161,15 @@ button {
                 width: 16px;
             }
         }
+
+        .boton-habilitado {
+            @extend %boton;
+            height: 30px;
+            margin: 5px;
+            width: 100px;
+        }
     }
 }
-
-/////////////////////////boton cuando está habilitado////////////////////////////////////
-.boton-habilitado {
-    @extend %boton;
-
-    img {
-        align-self: center;
-        border: none;
-        box-shadow: none;
-        height: 16px;
-        width: 16px;
-    }
-}
-
 
 .buscados {
     display: flex;
@@ -226,27 +221,13 @@ button {
     width: 1255px;
 }
 
-.contenedor-de-giphys {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    padding: 0px;
-    columns: 4;
-
-    img {
-        display: flex;
-        flex-wrap: wrap;
-        margin: 5px;
-        max-height: 300px;
-    }
-}
 
 .contenedores {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 0px;
-    columns: 5;
+    columns: 4;
 }
 
 .sugerencia {
@@ -286,7 +267,7 @@ button {
 .tendencia {
     display: flex;
     flex-direction: column;
-    margin: 5px;
+    padding: 5px;
 
     p {
         &::before {
@@ -296,6 +277,21 @@ button {
 
     img {
         max-height: 250px;
+
+        &:hover {
+            cursor: pointer;
+            border: 1px dotted #110038;
+        }
+    }
+}
+
+#contenedorDeBusqueda {
+    display: flex;
+    justify-content: space-between;
+
+    img {
+        max-height: 200px;
+        margin: 5px;
 
         &:hover {
             cursor: pointer;
@@ -317,7 +313,8 @@ button {
     flex-direction: column;
     margin: 20px 290px 20px 290px;
     padding: 5px;
-    video{
+
+    video {
         align-self: center;
     }
 }
@@ -395,12 +392,15 @@ button {
         align-self: flex-end;
     }
 }
-#gif{
+
+#gif {
     display: flex;
-    img{
+
+    img {
         width: 100%;
     }
 }
+
 #contenedor-2,
 #instrucciones,
 #chequeo,
@@ -410,8 +410,9 @@ button {
 #btn-captura {
     display: none;
 }
+
 #gif,
-#video{
+#video {
     width: 100%;
 }
 
