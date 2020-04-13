@@ -25,7 +25,7 @@ function elegirTema() {
 };
 
 function cambiarTemaDark() {
-    let logoSailorDark = document.getElementById('logo-day-gifos');
+    let logoSailorDark = document.getElementById('logo-day');
     logoSailorDark.id = 'gifOF_logo';
     logoSailorDark.src = './imagenes/gifOF_logo_dark.png';
     let body = document.body;

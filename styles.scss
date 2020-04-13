@@ -59,8 +59,8 @@ button {
 }
 
 .btn-rojo {
-    display: flex;
     background: #FF6161;
+    display: flex;
     margin: 0px;
 }
 
@@ -223,11 +223,11 @@ button {
 
 
 .contenedores {
+    columns: 4;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 0px;
-    columns: 4;
 }
 
 .sugerencia {
@@ -290,12 +290,12 @@ button {
     justify-content: space-between;
 
     img {
-        max-height: 200px;
         margin: 5px;
+        max-height: 200px;
 
         &:hover {
-            cursor: pointer;
             border: 1px dotted #110038;
+            cursor: pointer;
         }
     }
 }
@@ -303,7 +303,6 @@ button {
 ////////////////////////style mis guifos/////////////////////////////////////////////////////
 #contenedor_mis_guifos {
     @extend %container;
-    //display: none;
     padding: 5px;
 }
 
@@ -352,11 +351,11 @@ button {
 
 #subiendo-guifo {
     @extend %container-input;
+    align-items: center;
     display: flex;
     height: 250px;
-    justify-content: center;
     flex-direction: column;
-    align-items: center;
+    justify-content: center;
 
     p {
         @extend %p;
@@ -388,8 +387,8 @@ button {
     }
 
     button {
-        width: 200px;
         align-self: flex-end;
+        width: 200px;
     }
 }
 

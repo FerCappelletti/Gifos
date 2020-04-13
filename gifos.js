@@ -106,8 +106,8 @@ function getApiResults() {
         .then(busquedasEncontradas)
         .then(guardarBusquedas)
         .then(mostrarUltimaBusqueda)
-        //.then(limpiarInput)
         .then(deshabilitarBoton)
+        .then(limpiarInput);
 };
 
 function busquedasEncontradas(datos) {
@@ -115,7 +115,7 @@ function busquedasEncontradas(datos) {
     let contenedorImagen = document.getElementById('contenedorDeBusqueda');
     let gifsEncontrados = document.createElement('div');
     let resultadoBusqueda = document.createElement('div');
-    resultadoBusqueda.className = ('input') 
+    resultadoBusqueda.className = ('input');
     resultadoBusqueda.innerHTML = 'Acabas de buscar: ' + busqueda;
     for (i = 0; i < datos.data.length; i++) {
         let imagen = document.createElement('img');
@@ -124,7 +124,6 @@ function busquedasEncontradas(datos) {
     };
     gifsEncontrados.insertAdjacentElement('afterbegin', resultadoBusqueda)
     contenedorImagen.innerHTML = gifsEncontrados.innerHTML;
-
 };
 
 function elegirTema() {
@@ -170,11 +169,13 @@ function displayMenuBuscador() {
 function habilitarBotonBuscar() {
     let boton = document.getElementById("buscar");
     let lupa = document.getElementById('lupa');
-    let buscador = document.getElementById('input-buscar').value;
-    if (buscador) {
+    let buscador = document.getElementById('input-buscar');
+    if (buscador !== null) {
         boton.disabled = false;
         boton.classList.toggle("boton-habilitado");
         lupa.src = ('./imagenes/lupa.svg')
+    }else{
+        lupa.src = ('./imagenes/lupa_inactive.png')
     }
 };
 
@@ -201,7 +202,7 @@ function opcionesDeOtrasBusquedas() {
     menuOpcionesDeBusqueda.innerHTML = opcionDeBusquedas.innerHTML;
     opcionDeBusquedas.addEventListener('click', () => {
         buscador.innerHTML = opcionesDeBusqueda.textContent;
-        habilitarBotonBuscar();
+
     });
 }
 
@@ -229,14 +230,14 @@ async function mostrarUltimaBusqueda() {
     botonBusquedasRealizadas.addEventListener('click', () => {
         let buscador = document.getElementById('input-buscar');
         buscador.value = botonBusquedasRealizadas.textContent;
-        habilitarBotonBuscar();
+
     });
 };
 
 function hiceEnter(event) {
     if (event.which === 13) {
         getApiResults();
-        limpiarInput();
+        deshabilitarBoton();
     }
     event.stopPropagation();
 };
@@ -245,27 +246,13 @@ function limpiarInput() {
     buscador.value = '';
 };
 
-function getMisGuifos() {
-    let contenedorMisGuifos = document.getElementById('contenedor_mis_guifos');
-    let divAOcultarUno = document.getElementById('buscador');
-    let divAOcultarDos = document.getElementById('contenedor-sugerencias');
-    let divAOcultarTres = document.getElementById('contenedor-tendencias')
-
-    if (contenedorMisGuifos.style.display = 'none') {
-        divAOcultarUno.style.display = 'none';
-        divAOcultarDos.style.display = 'none';
-        divAOcultarTres.style.display = 'none';
-        contenedorMisGuifos.style.display = 'block';
-    };
-};
-
 function eventos() {
     document.getElementById('input-buscar').addEventListener('keyup', displayMenuBuscador);
     document.getElementById('input-buscar').addEventListener('change', habilitarBotonBuscar);
+    document.getElementById('input-buscar').addEventListener('focus', habilitarBotonBuscar);
     document.getElementById('buscar').addEventListener('click', getApiResults);
     document.getElementById('btn-3').addEventListener('click', elegirTema);
     document.getElementById('dark').addEventListener('click', cambiarTemaDark);
     document.getElementById('day').addEventListener('click', cambiarTemaDay);
-    document.getElementById('btn-4').addEventListener('click', getMisGuifos);
     document.body.addEventListener('keypress', hiceEnter);
 };
